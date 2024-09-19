@@ -1,12 +1,13 @@
 # Boilerplate display window functionality
 
 from __future__ import annotations
-from abc import ABC, abstractmethod
 
+from abc import ABC, abstractmethod
+from dataclasses import dataclass, field
 from random import choice
-from dataclasses import dataclass
-from dataclasses import field
+
 import arcade
+import arcade.color
 
 # Constants
 SCREEN_WIDTH = 600
@@ -15,8 +16,7 @@ SCREEN_HEIGHT = 800
 
 @dataclass
 class Color:
-    """This class defines a color and it's methods
-    """
+    """This class defines a color and it's methods"""
 
     PALETTE = [
         arcade.color.BLACK,
@@ -51,8 +51,7 @@ class Color:
 
 
 class Shape(ABC):
-    """This class defines generic shape object
-    """
+    """This class defines generic shape object"""
 
     def __init__(
         self,
@@ -141,12 +140,10 @@ class Shape(ABC):
 
 
 class Rectangle(Shape):
-    """This class defines a simple rectangle object
-    """
+    """This class defines a simple rectangle object"""
 
     def draw(self):
-        """Draw the rectangle based on the current state
-        """
+        """Draw the rectangle based on the current state"""
         arcade.draw_xywh_rectangle_filled(
             self.x, self.y, self.width, self.height, self.fill.color
         )
@@ -199,23 +196,19 @@ class Circle(Shape):
         super().__init__(x, y, size, size, pen, fill, dir_x, dir_y, speed_x, speed_y)
 
     def draw(self):
-        """Draw the circle based on the current state
-        """
+        """Draw the circle based on the current state"""
         radius = self.width / 2
         center_x = self.x + radius
         center_y = self.y + radius
         arcade.draw_circle_filled(center_x, center_y, radius, self.fill.color)
-        arcade.draw_circle_outline(
-            center_x, center_y, radius, self.pen.color, 3)
+        arcade.draw_circle_outline(center_x, center_y, radius, self.pen.color, 3)
 
 
 class Display(arcade.Window):
-    """Main display window
-    """
+    """Main display window"""
 
     def __init__(self, screen_title):
-        """Initialize the window
-        """
+        """Initialize the window"""
         # Call the parent class constructor
         super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, screen_title)
 
@@ -234,15 +227,13 @@ class Display(arcade.Window):
         self.shapes.append(shape)
 
     def on_update(self, delta_time):
-        """Update the position of the shapes in the display
-        """
+        """Update the position of the shapes in the display"""
         for shape in self.shapes:
             shape.x += shape.speed_x
             shape.y += shape.speed_y
 
     def on_draw(self):
-        """Called whenever you need to draw your window
-        """
+        """Called whenever you need to draw your window"""
 
         # Clear the screen and start drawing
         arcade.start_render()

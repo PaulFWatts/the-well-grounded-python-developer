@@ -1,4 +1,3 @@
-
 import functools
 from time import sleep, time
 
@@ -11,6 +10,7 @@ def timing_decorator(func):
         result = func(delay)
         print(f"task elapsed time: {time() - start_time}")
         return result
+
     return wrapper
 
 

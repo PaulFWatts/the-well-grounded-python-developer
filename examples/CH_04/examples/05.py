@@ -7,6 +7,7 @@ from abc import ABC, abstractmethod
 
 from random import choice
 import arcade
+import arcade.color
 
 # Constants
 SCREEN_WIDTH = 600
