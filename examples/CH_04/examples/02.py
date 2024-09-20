@@ -3,6 +3,7 @@
 from __future__ import annotations
 import arcade
 from random import choice
+import arcade.color
 
 # Constants
 SCREEN_WIDTH = 600

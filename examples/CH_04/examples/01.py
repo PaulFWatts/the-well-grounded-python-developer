@@ -1,7 +1,9 @@
 class Person:
     """Defines a person by name"""
 
-    def __init__(self, fname: str, mname: str = None, lname: str = None):
+    from typing import Optional
+
+    def __init__(self, fname: str, mname: Optional[str] = None, lname: Optional[str] = None):
         self.fname = fname
         self.mname = mname
         self.lname = lname
@@ -26,8 +28,10 @@ def main():
     ]
 
     # Print out the full names of the people
+    x = 0
     for person in people:
-        print(person.full_name())
+        x += 1
+        print(x, person.full_name())
 
 
 if __name__ == "__main__":
