@@ -53,6 +53,7 @@ class Color:
 class Shape(ABC):
     """This class defines generic shape object"""
 
+
     def __init__(
         self,
         x: int,
