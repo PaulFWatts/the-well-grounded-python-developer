@@ -12,6 +12,8 @@ def create_app():
 
     # create the flask app instance
     app = Flask(__name__)
+    app.config["SECRET_KEY"] = "c86a3084b86da703506b310d41f47f42f199349b7f48f2ca"
+    bytearray(app.config["SECRET_KEY"], "utf-8")
     dynaconf = FlaskDynaconf(extensions_list=True)
 
     with app.app_context():
@@ -50,3 +52,6 @@ def _configure_logging(app, dynaconf):
         logging_config["handlers"]["console"]["level"] = logging_level
         logging_config["loggers"][""]["level"] = logging_level
         logging.config.dictConfig(logging_config)
+        
+    # Additional logging to verify logging configuration
+    app.logger.info("Logging has been configured.")

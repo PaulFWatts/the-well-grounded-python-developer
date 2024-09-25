@@ -1,3 +1,4 @@
+exit
 # Chapter 7 Example Programs
 
 This directory contains the Chapter 7 examples from the book and scripts to install and run those examples.

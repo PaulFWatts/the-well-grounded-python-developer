@@ -11,6 +11,8 @@ def create_app():
     """Initialize the Flask app instance"""
 
     app = Flask(__name__)
+    app.config["SECRET_KEY"] = "c86a3084b86da703506b310d41f47f42f199349b7f48f2ca"
+    bytearray(app.config["SECRET_KEY"], "utf-8")
     dynaconf = FlaskDynaconf(extensions_list=True)
 
     with app.app_context():
